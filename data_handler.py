@@ -131,6 +131,19 @@ class Data_Handler():
         
         return teams
     
+    
+    
+                
+        
+    @classmethod
+    def search_team_standings(cls, year): 
+        
+        # player dict has key: player name
+        if year in cls.season_dict.keys():
+            return cls.season_dict.get(year)
+        else:
+            print(f"The year {year} standings data is unavailable")
+            return None
             
         
     @classmethod

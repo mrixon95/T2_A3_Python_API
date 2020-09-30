@@ -6,5 +6,6 @@ dh.import_player_data()
 dh.import_past_two_seasons_data()
 
 
-player = dh.search_player_data()
-print(player)
+# player = dh.search_player_data()
+team_standings = dh.search_team_standings(2020)
+team_standings.get_standings()

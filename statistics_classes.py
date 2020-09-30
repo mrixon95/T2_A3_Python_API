@@ -18,8 +18,8 @@ class Player():
         if birthday != None:
 
 
-            self._birthday = birthday
             date_of_birth = datetime.fromisoformat(birthday)
+            self._birthday = date_of_birth.strftime("%d/%m/%Y")
             date_now = datetime.now()
             difference_in_time = relativedelta(date_now, date_of_birth)
             self._age = difference_in_time.years
@@ -30,7 +30,11 @@ class Player():
         
         self._birth_city = birth_city
         self._birth_state = birth_state
-        self._college = college
+        if college != None:
+            self._college = college
+        else:
+            self._college = "N/A"
+        
         self._experience = experience + 2 # not sure why but the API experience value is 2 less than actual experience
         if salary != None:
             self._salary = "$" + "{:,}".format(salary)
@@ -53,12 +57,12 @@ class Player():
     def __repr__(self):
         return f"""{self.first_name} {self.last_name} of the {self._team} is {self._age} years old and plays in the {self._team.get_location()}.
 He is {self._height}cm tall and weighs {self._weight}kg.
-He salary is {self._salary} and he has been playing in the NBA for {self._experience} years.
+His salary is {self._salary} and he has been playing in the NBA for {self._experience} years.
 
 Further player details:
-Birt
-        
-        """
+Birthday: {self._birthday}      Birth City: {self._birth_city}     Birth State: {self._birth_state}
+College: {self._college}        Position: {self._position}        Jersey Number: {self._jersey} 
+"""
         
     @property
     def player_id(self):
@@ -170,7 +174,7 @@ class Team_Standing():
         self._total_losses = total_losses; self._home_wins = home_wins; self._home_losses = home_losses
         self._away_wins = away_wins; self._away_losses = away_losses; self._percentage = percentage;
         self._points_per_game_for = points_per_game_for; self._points_per_game_against = points_per_game_against; self._streak_description = streak_description
-        
+
         
     def __repr__(self):
         return "f{self.city} {self.name}"
@@ -179,6 +183,39 @@ class Team_Standing():
     @property
     def season(self):
         return self._season
+        
+    @property
+    def total_wins(self):
+        return self._total_wins
+        
+    @property
+    def total_losses(self):
+        return self._total_losses
+        
+    @property
+    def home_wins(self):
+        return self._home_wins
+    
+    @property
+    def home_losses(self):
+        return self._home_losses
+        
+    @property
+    def away_wins(self):
+        return self._away_wins
+    
+    @property
+    def away_losses(self):
+        return self._away_losses
+        
+    @property
+    def percentage(self):
+        return self._percentage
+
+        
+    @property
+    def name(self):
+        return self._name    
         
         
     @property
@@ -193,6 +230,10 @@ class Team_Standing():
     @property
     def city(self):
         return self._city
+    
+    @property
+    def conference(self):
+        return self._conference
         
         
     
@@ -201,10 +242,44 @@ class Season():
     
     def __init__(self, year):
         self._year = year
+        self._name_season = str(year-1) + "/" + str(year)
 
     
     def add_team_standings(self, team_standings):
-        self._team_standings = team_standings
+        self._eastern_conference = []
+        self._western_conference = []
+        for team_standing in team_standings:
+            if team_standing.conference == "Eastern":
+                self._eastern_conference.append(team_standing)
+            else:
+                self._western_conference.append(team_standing)
+        
+            
+        self._eastern_conference.sort(key=lambda x: x.percentage, reverse=True)
+        self._western_conference.sort(key=lambda x: x.percentage, reverse=True)
+        
+        
+    def get_standings(self):
+        print(f"\nFor the {self._name_season} season the standings were as follows\n")
+        
+        print(" Eastern Conference")
+        print("=" * 64)
+        print(f" {'{:<15}'.format('Team Name')}  {'{:<15}'.format('Team City')}" + '   W    L   PCT    Home   Away')
+        print("=" * 64)
+        
+        for team_standing in self._eastern_conference:
+            print(f" {'{:<15}'.format(team_standing.name)}  {'{:<15}'.format(team_standing.city)}  {team_standing.total_wins}   {team_standing.total_losses}  {'{:<5}'.format(team_standing.percentage)}  {'{:>2}'.format(team_standing.home_wins)}-{'{:<2}'.format(team_standing.home_losses)}  {'{:>2}'.format(team_standing.away_wins)}-{'{:<2}'.format(team_standing.away_losses)}")
+        
+        print("\n Western Conference")
+        print("=" * 64)
+        print(f" {'{:<15}'.format('Team Name')}  {'{:<15}'.format('Team City')}" + '   W    L   PCT    Home   Away')
+        print("=" * 64)
+        
+        for team_standing in self._western_conference:
+            print(f" {'{:<15}'.format(team_standing.name)}  {'{:<15}'.format(team_standing.city)}  {team_standing.total_wins}   {team_standing.total_losses}  {'{:<5}'.format(team_standing.percentage)}  {'{:>2}'.format(team_standing.home_wins)}-{'{:<2}'.format(team_standing.home_losses)}  {'{:>2}'.format(team_standing.away_wins)}-{'{:<2}'.format(team_standing.away_losses)}")
+                                                                                                                                                                                                  
+
+            
         
     def __repr__(self):
         return "Season" + self._year
