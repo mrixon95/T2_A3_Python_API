@@ -18,7 +18,63 @@ class Data_Handler():
             return team
         else:
             print(f"There is no team with {team_key} as their key")
+            
     
+    @classmethod
+    def players_from_state(cls):
+        
+        while True:
+            
+            print("Which state do you want players from: ")
+            state = input()
+            state_lower = state.lower()
+            count = 0
+            for player in cls.players_dict.values():
+                if player.birth_state.lower() == state_lower:
+                    print()
+                    print(player)
+                    count += 1
+                    
+            print(f"\nThere are {count} active NBA players from the state of {state}\n")
+            break
+            
+            
+    
+    
+    
+    @classmethod
+    def teams_info(cls):
+        
+        while True:
+            
+            print("Which team would you like to choose: ", end='')
+            team_search = input()
+            team_search_lower = team_search.lower()
+            matches = 0
+            match_name = ''
+            print("\nSearching NBA team list for matching names.\n")
+            
+            matched_team = None
+            for team_object in cls.teams_dict.values():
+                team_name = team_object.get_team_name()
+                team_name_lower = team_name.lower()
+                if team_search_lower in team_name_lower:
+                    matched_team = team_object
+                    matches += 1
+                    print("Matched team name: \t" + team_name)
+        
+            
+            if matches == 1:
+                print()
+                return matched_team
+            elif matches > 1:
+                print(f"\nThere are {matches} team names in total that match your search. Please type in their full name so we can find the exact team you are looking for.")
+            else:
+                print(f"We could not find any team names which matched {team_search}. Please try again.")
+                
+                
+            
+        
     
     @classmethod
     def import_player_data(cls):
@@ -41,6 +97,8 @@ class Data_Handler():
             team_object = cls.teams_dict.get(player['Team'])
             
             player_object.set_team(team_object)
+            if not team_object.add_player(player_object):
+                raise ValueError
             
             cls.players_dict[key] = player_object
             
@@ -122,7 +180,8 @@ class Data_Handler():
             
             key = str(team['TeamID']) + '_' + team['City'] + '_' + team['Name']
             team_object = Team_Standing(key, team['Season'], team['TeamID'], team['Key'], team['City'], team['Name'], team['Conference'], team['Division'],
-            team['Wins'], team['Losses'], team['HomeWins'], team['HomeLosses'], team['AwayWins'], team['AwayLosses'], team['Percentage'], team['PointsPerGameFor'], team['PointsPerGameAgainst'], team['StreakDescription'])
+            team['Wins'], team['Losses'], team['HomeWins'], team['HomeLosses'], team['AwayWins'], team['AwayLosses'], team['Percentage'], team['PointsPerGameFor'],
+            team['PointsPerGameAgainst'], team['StreakDescription'], team['LastTenWins'], team['LastTenLosses'])
             
             teams.append(team_object)
             
@@ -178,7 +237,7 @@ class Data_Handler():
             elif matches > 1:
                 print(f"\nThere are {matches} names in total that match your search. Please type in their full name so we can find the exact player you are looking for.")
             else:
-                print(f"\nWe could not find any names which matched {player_search}. Please try again.")
+                print(f"We could not find any names which matched {player_search}. Please try again.")
                 
                 
                 
