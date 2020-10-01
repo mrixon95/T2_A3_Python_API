@@ -5,6 +5,20 @@ dh.import_player_data()
 dh.import_past_two_seasons_data()
 
 
+def get_input1():
+    return input().lower()
+    
+def get_input2():
+    return input().lower()
+    
+def get_input3():
+    return input().lower()
+    
+def get_input4():
+    return input().lower()
+    
+    
+
 def menu():
     print("\nMain menu: \n\
 1 - Search for the statistics of an active player in the NBA\n\
@@ -23,9 +37,9 @@ def get_team_members():
 
     while True:
         print(
-            f"\nThe players are ordered by {team.ordering}. Would you like to\
-            reorder the players by one of their other statistics? (Y/N): ")
-        entry = input().lower()
+            f"\nThe players are ordered by {team.ordering}. Would you like to"
+            f"reorder the players by one of their other statistics? (Y/N): ")
+        entry = get_input1()
         if entry == 'y':
             while True:
                 print("Players can be reordered by:   \
@@ -33,7 +47,7 @@ Last name, Jersey, Position, Salary, Experience, Age, Weight, Height")
 
                 print("Type in the name of the stat\
 you would like to reorder by: ")
-                stat = input().lower()
+                stat = get_input2()
                 if team.reorder(stat):
                     # reordered and printed successfully
                     break
@@ -56,15 +70,15 @@ def order_standings(season_year):
     team_standings.get_standings()
     while True:
         print(
-            f"\nThe standings are ordered by {team_standings.ordering}.\
-Would you like to reorder the standings by one of the\
+            f"\nThe standings are ordered by {team_standings.ordering}. \
+Would you like to reorder the standings by one of the \
 other columns? (Y/N): ")
-        entry = input().lower()
+        entry = get_input3()
         if entry == 'y':
             while True:
                 print("Type in the name of the column\
 you would like to reorder by: ")
-                column = input().lower()
+                column = get_input4()
                 if team_standings.reorder(column):
                     team_standings.get_standings()
                     break

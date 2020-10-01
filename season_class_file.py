@@ -22,6 +22,10 @@ class Season():
             self.reorder_by_total_losses()
             self._ordering = 'total losses'
             return True
+        elif column_name == "pct":
+            self.reorder_by_percentage()
+            self._ordering = 'percentage'
+            return True
         elif column_name == "home":
             self.reorder_by_home_wins()
             self._ordering = 'home wins'
@@ -52,6 +56,8 @@ class Season():
     def __init__(self, year):
         self._year = year
         self._name_season = str(year - 1) + "/" + str(year)
+        
+        
 
     def reorder_by_total_wins(self):
 
@@ -140,45 +146,45 @@ class Season():
         print("=" * 100)
         print(
             f" {'{:<15}'.format('Team City')}  {'{:<15}'.format('Team Name')}"
-            + '   W    L   PCT    Home   Away    PPG    OPP PPG    STRK    L10'
+            + '   W    L    PCT     Home    Away   PPG    OPP PPG    STRK    L10'
         )
         print("=" * 100)
 
         for team in self._eastern_conference:
 
-            message = f"{'{:<15}'.format(team.city)}"
-            message += f"{'{:<15}'.format(team.name)}"
-            message += f"{team.total_wins}"
-            message += f"{team.total_losses}   {'{:<5}'.format(team.pct)}"
-            message += f"{'{:>5}'.format(team.home_record)}"
-            message += f"{'{:>5}'.format(team.away_record)}"
-            message += f"{'{:<7}'.format(team.points_per_game_for)}"
-            message += f"{'{:<7}'.format(team.points_per_game_against)}"
-            message += f"{'{:<2}'.format(team.streak_description)}"
-            message += f"{'{:>5}'.format(team.last_ten_games)}"
-            print(message)
+            print(  f" {'{:<17}'.format(team.city)}"
+                    f"{'{:<17}'.format(team.name)}"
+                    f"{team.total_wins}   "
+                    f"{team.total_losses}   {'{:<9}'.format(team.pct)}"
+                    f"{'{:<7}'.format(team.home_record)}"
+                    f"{'{:<7}'.format(team.away_record)}"
+                    f"{'{:<9}'.format(team.points_per_game_for)}"
+                    f"{'{:<11}'.format(team.points_per_game_against)}"
+                    f"{'{:<7}'.format(team.streak_description)}"
+                    f"{'{:<7}'.format(team.last_ten_games)}"
+            )
 
         print("\n Western Conference")
         print("=" * 100)
         print(
-            f" {'{:<15}'.format('Team City')}   {'{:<15}'.format('Team Name')}"
-            + '   W    L   PCT    Home   Away    '
-            + 'PPG    OPP PPG    STRK    L10')
+            f" {'{:<15}'.format('Team City')}  {'{:<15}'.format('Team Name')}"
+            + '   W    L    PCT     Home    Away   PPG    OPP PPG    STRK    L10'
+        )
         print("=" * 100)
 
         for team in self._western_conference:
 
-            message = f"{'{:<15}'.format(team.city)}"
-            message += f"{'{:<15}'.format(team.name)}"
-            message += f"{team.total_wins}"
-            message += f"{team.total_losses}   {'{:<5}'.format(team.pct)}"
-            message += f"{'{:>5}'.format(team.home_record)}"
-            message += f"{'{:>5}'.format(team.away_record)}"
-            message += f"{'{:<7}'.format(team.points_per_game_for)}"
-            message += f"{'{:<7}'.format(team.points_per_game_against)}"
-            message += f"{'{:<2}'.format(team.streak_description)}"
-            message += f"{'{:>5}'.format(team.last_ten_games)}"
-            print(message)
+            print(  f" {'{:<17}'.format(team.city)}"
+                    f"{'{:<17}'.format(team.name)}"
+                    f"{team.total_wins}   "
+                    f"{team.total_losses}   {'{:<9}'.format(team.pct)}"
+                    f"{'{:<7}'.format(team.home_record)}"
+                    f"{'{:<7}'.format(team.away_record)}"
+                    f"{'{:<9}'.format(team.points_per_game_for)}"
+                    f"{'{:<11}'.format(team.points_per_game_against)}"
+                    f"{'{:<7}'.format(team.streak_description)}"
+                    f"{'{:<7}'.format(team.last_ten_games)}"
+            )
 
     def __repr__(self):
         return "Season" + self._year

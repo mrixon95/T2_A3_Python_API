@@ -88,18 +88,19 @@ class Player():
 
     def __repr__(self):
         return (f"{self.first_name} {self.last_name} of the {self._team}"
-f" is {self._age} years old.\nHis team plays in both the {self._team.get_location()}."
-f"\nHe is {self._height}cm tall and weighs {self._weight}kg."
-f"\nHis salary is {self._salary} and he has been playing in"
-f" the NBA for {self._experience} years.\n"
+                f" is {self._age} years old."
+                f"\nHis team plays in both the {self._team.get_location()}."
+                f"\nHe is {self._height}cm tall and weighs {self._weight}kg."
+                f"\nHis salary is {self._salary} and he has been playing in"
+                f" the NBA for {self._experience} years.\n"
 
-"\nFurther player details:\n"
-'{:<40}'.format("\nBirthday: " + self._birthday)
-+ '{:<40}'.format("Birth City: " + self._birth_city)
-+ '{:<40}'.format("\nBirth State: " + self._birth_state)
-+ '{:<40}'.format("College: " + self._college)
-+ '{:<40}'.format("\nPosition: " + self._position)
-+ '{:<40}'.format("Jersey Number: " + str(self._jersey)))
+                "\nFurther player details:\n"
+                '{:<40}'.format("\nBirthday: " + self._birthday)
+                + '{:<40}'.format("Birth City: " + self._birth_city)
+                + '{:<40}'.format("\nBirth State: " + self._birth_state)
+                + '{:<40}'.format("College: " + self._college)
+                + '{:<40}'.format("\nPosition: " + self._position)
+                + '{:<40}'.format("Jersey Number: " + str(self._jersey)))
 
     @property
     def player_id(self):
