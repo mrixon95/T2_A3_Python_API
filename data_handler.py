@@ -39,7 +39,7 @@ class Data_Handler():
 
             print(
                 f"\nThere are {count} active NBA players "
-                + "from the state of {state}\n")
+                f"from the state of {state}\n")
             break
 
     @classmethod

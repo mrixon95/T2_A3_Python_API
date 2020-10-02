@@ -70,7 +70,7 @@ class TestOrderStandings(unittest.TestCase):
 	    self.assertEqual(city_team_last_alphabet, 'Washington')
 	    
 	    team_standings.reorder('percentage')
-	    city_team_last_alphabet = team_standings._western_conference[0].city
-	    self.assertEqual(city_team_last_alphabet, 'Golden State')
+	    city_team_last_percentage = team_standings._western_conference[0].city
+	    self.assertEqual(city_team_last_percentage, 'Golden State')
 	    
 	    

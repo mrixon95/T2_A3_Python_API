@@ -73,8 +73,8 @@ class Season():
 
     def reorder_by_city(self):
 
-        self._eastern_conference.sort(key=lambda x: x.city, reverse=True)
-        self._western_conference.sort(key=lambda x: x.city, reverse=True)
+        self._eastern_conference.sort(key=lambda x: x.city)
+        self._western_conference.sort(key=lambda x: x.city)
 
     def reorder_by_streak_description(self):
 
@@ -85,8 +85,8 @@ class Season():
 
     def reorder_by_name(self):
 
-        self._eastern_conference.sort(key=lambda x: x.name, reverse=True)
-        self._western_conference.sort(key=lambda x: x.name, reverse=True)
+        self._eastern_conference.sort(key=lambda x: x.name)
+        self._western_conference.sort(key=lambda x: x.name)
 
     def reorder_by_home_wins(self):
 

@@ -38,7 +38,7 @@ def get_team_members():
     while True:
         print(
             f"\nThe players are ordered by {team.ordering}. Would you like to"
-            f"reorder the players by one of their other statistics? (Y/N): ")
+            f" reorder the players by one of their other statistics? (Y/N): ")
         entry = get_input1()
         if entry == 'y':
             while True:
@@ -76,7 +76,7 @@ other columns? (Y/N): ")
         entry = get_input3()
         if entry == 'y':
             while True:
-                print("Type in the name of the column\
+                print("Type in the name of the column \
 you would like to reorder by: ")
                 column = get_input4()
                 if team_standings.reorder(column):
@@ -99,8 +99,8 @@ while not quit:
     try:
         entry = int(input("Your input: "))
         if not 1 <= entry <= 6:
-            print("Invalid input. Please enter an integer between 1 and 6")
-            continue
+            raise ValueError
+
         elif entry == 1:
             player = dh.search_player_data()
             print(player)
@@ -122,7 +122,7 @@ while not quit:
             print("Exiting the program")
 
         else:
-            print("Invalid input")
+            raise ValueError
 
     except ValueError:
         print("Sorry your input was invalid. \
