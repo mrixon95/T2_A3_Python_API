@@ -20,4 +20,22 @@ jobs:
       - name: Run Tests
         run: |
           python -m unittest
-        
+  deployment:
+    needs: test_suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fresh clone & repo install
+        uses: appleboy/ssh-action@master
+        with:
+          #IP address of EC2 instance
+          host: 54.227.181.213
+          #User you created on the EC2 instance
+          username: github-actions
+          #Name of the secrets variable where you put your secret key
+          key: ${{ secrets.ssh_key }}
+          port: 22
+          script: |
+            rm -rf T2_A3_Python_API
+            git clone https://github.com/mrixon95/T2_A3_Python_API.git
+            python3.8 -m venv /home/github-actions/T2_A3_Python_API/venv
+            /home/github-actions/T2_A3_Python_API/venv/bin/pip3.8 install -r /home/github-actions/T2_A3_Python_API/requirements.txt      
