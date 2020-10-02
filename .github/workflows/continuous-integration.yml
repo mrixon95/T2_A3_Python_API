@@ -38,4 +38,5 @@ jobs:
             rm -rf T2_A3_Python_API
             git clone https://github.com/mrixon95/T2_A3_Python_API.git
             python3.8 -m venv /home/github-actions/T2_A3_Python_API/venv
-            /home/github-actions/T2_A3_Python_API/venv/bin/pip3 install -r /home/github-actions/T2_A3_Python_API/requirements.txt      
+            source /home/github-actions/T2_A3_Python_API/venv/bin/activate
+            pip3 install -r /home/github-actions/T2_A3_Python_API/requirements.txt      
