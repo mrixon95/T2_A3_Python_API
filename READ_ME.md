@@ -1,11 +1,11 @@
-Description of application that provides two-way communication
+## Description of my Python application that provides two-way communication:
 
 This application I have built queries the SportsData NBA API. 
 The urls for the APIs are: 
-https://api.sportsdata.io/v3/nba/scores/json/Players
-https://api.sportsdata.io/v3/nba/scores/json/teams
-https://api.sportsdata.io/v3/nba/scores/json/Standings/{season_num}
-https://api.sportsdata.io/v3/nba/scores/json/CurrentSeason
+* https://api.sportsdata.io/v3/nba/scores/json/Players
+* https://api.sportsdata.io/v3/nba/scores/json/teams
+* https://api.sportsdata.io/v3/nba/scores/json/Standings/{season number}
+* https://api.sportsdata.io/v3/nba/scores/json/CurrentSeason
 
 Be careful using these APIs, some of the data is scrambled. 
 My application only references the unscrambled data.
@@ -51,3 +51,6 @@ Before running the application, please ensure that all of these modules
 have been installed in your environment. Also the application requires 
 Python version 3.8 so please install that version before running the
 application.
+
+
+![T2_A3_Python_API_flowdiagram.jpg](T2_A3_Python_API_flowdiagram.jpg)
