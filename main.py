@@ -1,5 +1,6 @@
 from data_handler import Data_Handler as dh
 
+# need to import data from API
 dh.import_team_data()
 dh.import_player_data()
 dh.import_past_two_seasons_data()
