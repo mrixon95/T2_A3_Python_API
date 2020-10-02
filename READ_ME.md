@@ -40,17 +40,20 @@ The main menu is in the main.py file and the main.py file handles all
 of the user input. 
 
 The application uses the follows modules for the following purposes:
-The typing module is used for type annotations
-The unittest module is used to import functionality to test my code
-The requests module is used so that the python file may make API requests
-The json module converts the returned API json text into python code.
-The relativedate python file is a copy of the relativedate module and
+* The typing module is used for type annotations
+* The unittest module is used to import functionality to test my code
+* The requests module is used so that the python file may make API requests
+* The json module converts the returned API json text into python code
+* The relativedate python file is a copy of the relativedate module and
 is used to calculate the number of years between two dates
 
-Before running the application, please ensure that all of these modules 
+Before running the application, please ensure that all of the modules mentioned 
 have been installed in your environment. Also the application requires 
 Python version 3.8 so please install that version before running the
 application.
 
+## Flow diagram
+![T2_A3_Python_API_flowdiagram](./T2_A3_Python_API_flowdiagram.jpg)
 
-![T2_A3_Python_API_flowdiagram.jpg](T2_A3_Python_API_flowdiagram.jpg)
+## Project Management
+![Trello_board_screenshot](./t.png)
