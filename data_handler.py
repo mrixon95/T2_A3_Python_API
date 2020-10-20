@@ -260,7 +260,7 @@ class Data_Handler():
                 print(
                     f"\nThere are {matches} names in total that match "
                     "your search. Please type in their full name so \
-                    we can find the exact player you are looking for.")
+we can find the exact player you are looking for.")
             else:
                 print(
                     "We could not find any names which matched"
